@@ -1,13 +1,13 @@
 'use client'
 
-import LoginForm from '@/components/LoginForm'
-import { Button, Flex, Heading, Image, Text } from '@chakra-ui/react'
+import RegisterForm from '@/components/RegisterForm'
+import { Flex, Heading, Image, Text } from '@chakra-ui/react'
 
-export default function LoginScreen() {
+export default function RegisterScreen() {
   return (
     <Flex
       w="full"
-      h="100vh"
+      h="155vh"
       bg="linear-gradient(180deg, #5C99E1 32.86%, #1916BB 100%)"
     >
       <Flex
@@ -23,18 +23,15 @@ export default function LoginScreen() {
         <Image
           src="./Logomarca.png"
           alt="logomarca petguardian"
-          h="30%"
+          h="20%"
           w="auto"
         />
-        <Heading>Bem vindo!</Heading>
+        <Heading>Ainda não tem cadastro?</Heading>
         <Text fontWeight="light">
-          Em cada adoção, um capítulo emocionante começa. Faça parte da história
-          no universo Pet Guardian
+          Para dar início a essa empolgante jornada em busca do seu companheiro
+          ideal, precisamos de algumas informações.
         </Text>
-        <LoginForm />
-        <Button colorScheme="blue" w="80%">
-          Cadastre-se
-        </Button>
+        <RegisterForm />
       </Flex>
     </Flex>
   )
