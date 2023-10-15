@@ -1,5 +1,5 @@
-import PetListScreen from '@/patterns/PetListScreen'
+import LoginScreen from '@/patterns/LoginScreen'
 
 export default function Home() {
-  return <PetListScreen />
+  return <LoginScreen />
 }

@@ -2,8 +2,10 @@
 
 import LoginForm from '@/components/LoginForm'
 import { Button, Flex, Heading, Image, Text } from '@chakra-ui/react'
+import { useRouter } from 'next/navigation'
 
 export default function LoginScreen() {
+  const router = useRouter()
   return (
     <Flex
       w="full"
@@ -32,7 +34,11 @@ export default function LoginScreen() {
           no universo Pet Guardian
         </Text>
         <LoginForm />
-        <Button colorScheme="blue" w="80%">
+        <Button
+          colorScheme="blue"
+          w="80%"
+          onClick={() => router.push('/cadastre')}
+        >
           Cadastre-se
         </Button>
       </Flex>
