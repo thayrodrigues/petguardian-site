@@ -1,16 +1,25 @@
 'use client'
 
 import LoginForm from '@/components/LoginForm'
-import { Button, Flex, Heading, Image, Text } from '@chakra-ui/react'
+import {
+  Button,
+  Flex,
+  Heading,
+  Image,
+  Text,
+  useMediaQuery,
+} from '@chakra-ui/react'
 import { useRouter } from 'next/navigation'
 
 export default function LoginScreen() {
+  const [isLarger] = useMediaQuery('(min-width: 900px)')
   const router = useRouter()
   return (
     <Flex
       w="full"
       h="100vh"
       bg="linear-gradient(180deg, #5C99E1 32.86%, #1916BB 100%)"
+      justify="center"
     >
       <Flex
         color="#12327C"
@@ -20,7 +29,9 @@ export default function LoginScreen() {
         p={6}
         my={6}
         align="center"
-        direction="column"
+        direction={isLarger ? 'row' : 'column'}
+        justify="space-around"
+        maxW="1000px"
       >
         <Image
           src="./Logomarca.png"
@@ -28,19 +39,28 @@ export default function LoginScreen() {
           h="30%"
           w="auto"
         />
-        <Heading>Bem vindo!</Heading>
-        <Text fontWeight="light">
-          Em cada adoção, um capítulo emocionante começa. Faça parte da história
-          no universo Pet Guardian
-        </Text>
-        <LoginForm />
-        <Button
-          colorScheme="blue"
-          w="80%"
-          onClick={() => router.push('/cadastre')}
+        <Flex
+          direction="column"
+          justify="center"
+          textAlign="center"
+          maxW="500px"
         >
-          Cadastre-se
-        </Button>
+          <Heading>Bem vindo!</Heading>
+          <Text fontWeight="light">
+            Em cada adoção, um capítulo emocionante começa. Faça parte da
+            história no universo Pet Guardian
+          </Text>
+          <LoginForm />
+          <Button
+            colorScheme="blue"
+            w="80%"
+            maxW="310px"
+            onClick={() => router.push('/cadastre')}
+            mx="auto"
+          >
+            Cadastre-se
+          </Button>
+        </Flex>
       </Flex>
     </Flex>
   )
