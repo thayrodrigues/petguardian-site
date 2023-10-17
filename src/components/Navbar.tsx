@@ -1,5 +1,6 @@
 import { Image, Flex, Text, Icon, Spacer } from '@chakra-ui/react'
-import { BellIcon, HamburgerIcon } from '@chakra-ui/icons'
+import { BellIcon } from '@chakra-ui/icons'
+import MenuDrawer from './MenuDrawer'
 
 export default function Navbar() {
   return (
@@ -16,7 +17,7 @@ export default function Navbar() {
       </Text>
       <Spacer />
       <Icon as={BellIcon} w={6} h={6} mr={4} />
-      <Icon as={HamburgerIcon} w={6} h={6} />
+      <MenuDrawer />
     </Flex>
   )
 }

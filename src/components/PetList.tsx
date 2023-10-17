@@ -29,7 +29,11 @@ export default function PetList() {
         Veja os amigos disponíveis para adoção!
       </Heading>
       <Flex mb={4} justifyContent="space-between">
-        <Select placeholder="Ordenar" icon={<ChevronDownIcon />} width="48%" />
+        <Select
+          placeholder="Categoria"
+          icon={<ChevronDownIcon />}
+          width="48%"
+        />
         <Select placeholder="Cães" icon={<ChevronDownIcon />} width="48%" />
       </Flex>
       <Box mb={4}>
@@ -44,10 +48,10 @@ export default function PetList() {
             <Heading size="md" color="#3772FF">
               Dunga
             </Heading>
-            <Text>2 anos</Text>
-            <Text>Porte pequeno</Text>
-            <Text>Calmo e educado</Text>
-            <Text>2,2km - cães</Text>
+            <Text fontFamily="Montserrat">2 anos</Text>
+            <Text fontFamily="Montserrat">Porte pequeno</Text>
+            <Text fontFamily="Montserrat">Calmo e educado</Text>
+            <Text fontFamily="Montserrat">2,2km - cães</Text>
           </Box>
           <Text
             fontFamily="Montserrat"
@@ -76,10 +80,10 @@ export default function PetList() {
             <Heading size="md" color="#3772FF">
               Sirius
             </Heading>
-            <Text>6 anos</Text>
-            <Text>Porte grande</Text>
-            <Text>Ativo e educado</Text>
-            <Text>5,3km - cães</Text>
+            <Text fontFamily="Montserrat">6 anos</Text>
+            <Text fontFamily="Montserrat">Porte grande</Text>
+            <Text fontFamily="Montserrat">Ativo e educado</Text>
+            <Text fontFamily="Montserrat">5,3km - cães</Text>
           </Box>
           <Text
             fontFamily="Montserrat"
@@ -108,10 +112,10 @@ export default function PetList() {
             <Heading size="md" color="#3772FF">
               Fiona
             </Heading>
-            <Text>3 anos</Text>
-            <Text>Porte pequeno</Text>
-            <Text>Calma e carinhosa</Text>
-            <Text>1,7km - cães</Text>
+            <Text fontFamily="Montserrat">3 anos</Text>
+            <Text fontFamily="Montserrat">Porte pequeno</Text>
+            <Text fontFamily="Montserrat">Calma e carinhosa</Text>
+            <Text fontFamily="Montserrat">1,7km - cães</Text>
           </Box>
           <Text
             fontFamily="Montserrat"
