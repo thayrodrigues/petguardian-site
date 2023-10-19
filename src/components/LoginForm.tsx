@@ -28,12 +28,14 @@ export default function LoginForm() {
 
   const onSubmit = async (data: AuthLogin) => {
     try {
-      const response = await AuthService.login(data)
+      await AuthService.login(data)
       router.push('/home')
+      // eslint-disable-next-line @typescript-eslint/no-explicit-any
     } catch (error: any) {
       toast({
         title: 'Erro ao fazer login',
         description: error.message,
+        position: 'top-right',
         status: 'error',
         duration: 9000,
         isClosable: true,
@@ -66,6 +68,12 @@ export default function LoginForm() {
       <FormControl mt={4}>
         <FormLabel>Senha</FormLabel>
         <InputGroup>
+          <Input
+            type={showPassword ? 'text' : 'password'}
+            placeholder="Digite sua senha"
+            required
+            {...register('password')}
+          />
           <InputRightElement>
             <IconButton
               variant="unstyled"
@@ -74,12 +82,6 @@ export default function LoginForm() {
               onClick={handleShowPassword}
             />
           </InputRightElement>
-          <Input
-            type={showPassword ? 'text' : 'password'}
-            placeholder="Digite sua senha"
-            required
-            {...register('password')}
-          />
         </InputGroup>
       </FormControl>
       <Button
