@@ -34,7 +34,7 @@ export default function LoginScreen() {
         maxW="1000px"
       >
         <Image
-          src="./Logomarca.png"
+          src="/Logomarca.png"
           alt="logomarca petguardian"
           h="30%"
           w="auto"
