@@ -1,5 +1,6 @@
-import { Box, Flex, Heading, Select, Image, Text } from '@chakra-ui/react'
+import { Box, Flex, Heading, Select, Text } from '@chakra-ui/react'
 import { ChevronDownIcon } from '@chakra-ui/icons'
+import PetCard from './PetCard'
 
 export default function PetList() {
   return (
@@ -28,110 +29,18 @@ export default function PetList() {
       >
         Veja os amigos disponíveis para adoção!
       </Heading>
-      <Flex mb={4} justifyContent="space-between">
-        <Select
-          placeholder="Categoria"
-          icon={<ChevronDownIcon />}
-          width="48%"
-        />
-        <Select placeholder="Cães" icon={<ChevronDownIcon />} width="48%" />
+      <Flex mb={4} justifyContent="center" maxW="1000px" wrap="wrap" gap={4}>
+        <Select placeholder="Categoria" icon={<ChevronDownIcon />} width="sm" />
+        <Select placeholder="Cães" icon={<ChevronDownIcon />} width="sm" />
       </Flex>
-      <Box mb={4}>
-        <Flex bg="gray.100" borderRadius="md" p={4} align="center">
-          <Image
-            src="./Dunga.png"
-            alt="Dunga"
-            borderRadius="full"
-            boxSize="80px"
-          />
-          <Box ml={4}>
-            <Heading size="md" color="#3772FF">
-              Dunga
-            </Heading>
-            <Text fontFamily="Montserrat">2 anos</Text>
-            <Text fontFamily="Montserrat">Porte pequeno</Text>
-            <Text fontFamily="Montserrat">Calmo e educado</Text>
-            <Text fontFamily="Montserrat">2,2km - cães</Text>
-          </Box>
-          <Text
-            fontFamily="Montserrat"
-            lineHeight="1.6"
-            fontWeight="regular"
-            fontSize="10px"
-            textDecoration="underline"
-            color="#444444"
-            width="97.1px"
-            height="13.63px"
-            textAlign="end"
-          >
-            ver detalhes
-          </Text>
-        </Flex>
-      </Box>
-      <Box mb={4}>
-        <Flex bg="gray.100" borderRadius="md" p={4} align="center">
-          <Image
-            src="./Sirius.png"
-            alt="Sirius"
-            borderRadius="full"
-            boxSize="80px"
-          />
-          <Box ml={4}>
-            <Heading size="md" color="#3772FF">
-              Sirius
-            </Heading>
-            <Text fontFamily="Montserrat">6 anos</Text>
-            <Text fontFamily="Montserrat">Porte grande</Text>
-            <Text fontFamily="Montserrat">Ativo e educado</Text>
-            <Text fontFamily="Montserrat">5,3km - cães</Text>
-          </Box>
-          <Text
-            fontFamily="Montserrat"
-            lineHeight="1.6"
-            fontWeight="regular"
-            fontSize="10px"
-            textDecoration="underline"
-            color="#444444"
-            width="97.1px"
-            height="13.63px"
-            textAlign="end"
-          >
-            ver detalhes
-          </Text>
-        </Flex>
-      </Box>
-      <Box mb={4}>
-        <Flex bg="gray.100" borderRadius="md" p={4} align="center">
-          <Image
-            src="./Fiona.png"
-            alt="Fiona"
-            borderRadius="full"
-            boxSize="80px"
-          />
-          <Box ml={4}>
-            <Heading size="md" color="#3772FF">
-              Fiona
-            </Heading>
-            <Text fontFamily="Montserrat">3 anos</Text>
-            <Text fontFamily="Montserrat">Porte pequeno</Text>
-            <Text fontFamily="Montserrat">Calma e carinhosa</Text>
-            <Text fontFamily="Montserrat">1,7km - cães</Text>
-          </Box>
-          <Text
-            fontFamily="Montserrat"
-            lineHeight="1.6"
-            fontWeight="regular"
-            fontSize="10px"
-            textDecoration="underline"
-            color="#444444"
-            width="97.1px"
-            height="13.63px"
-            textAlign="end"
-          >
-            ver detalhes
-          </Text>
-        </Flex>
-      </Box>
+      <Flex mb={4} wrap="wrap" gap={6} w="full" justify="center">
+        <PetCard />
+        <PetCard />
+        <PetCard />
+        <PetCard />
+        <PetCard />
+        <PetCard />
+      </Flex>
     </Box>
   )
 }

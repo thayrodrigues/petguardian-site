@@ -1,5 +1,4 @@
 import {
-  Box,
   Flex,
   Heading,
   Button,
@@ -8,13 +7,14 @@ import {
   Text,
   FormControl,
   FormLabel,
+  Container,
 } from '@chakra-ui/react'
 
 import { ChevronLeftIcon, EditIcon } from '@chakra-ui/icons'
 
 export default function DonorProfile() {
   return (
-    <Box px={5} py={6} bg="white">
+    <Container px={5} py={6} bg="white">
       <Flex justifyContent="space-between" alignItems="center" mb={5}>
         <Button leftIcon={<ChevronLeftIcon />} variant="ghost" color="#12327C">
           voltar
@@ -49,29 +49,33 @@ export default function DonorProfile() {
         <FormLabel>Nome e Sobrenome:</FormLabel>
         <Input placeholder="Tatiane Alves" />
       </FormControl>
-      <FormControl mb={4} color="#12327C">
-        <FormLabel>CPF:</FormLabel>
-        <Input placeholder="223.432.345-12" />
-      </FormControl>
+      <Flex gap={4}>
+        <FormControl mb={4} color="#12327C">
+          <FormLabel>CPF:</FormLabel>
+          <Input placeholder="223.432.345-12" />
+        </FormControl>
+        <FormControl mb={4} color="#12327C">
+          <FormLabel>Telefone:</FormLabel>
+          <Input placeholder="(23) 99828-2098" />
+        </FormControl>
+      </Flex>
       <FormControl mb={4} color="#12327C">
         <FormLabel>E-mail:</FormLabel>
         <Input placeholder="tatiane_alves@gmail.com" />
       </FormControl>
-      <FormControl mb={4} color="#12327C">
-        <FormLabel>Telefone:</FormLabel>
-        <Input placeholder="(23) 99828-2098" />
-      </FormControl>
-      <FormControl mb={4} color="#12327C">
-        <FormLabel>Senha:</FormLabel>
-        <Input type="password" placeholder="**********" />
-      </FormControl>
-      <FormControl mb={4} color="#12327C">
-        <FormLabel>Confirmar senha:</FormLabel>
-        <Input type="password" placeholder="**********" />
-      </FormControl>
+      <Flex gap={4}>
+        <FormControl mb={4} color="#12327C">
+          <FormLabel>Senha:</FormLabel>
+          <Input type="password" placeholder="**********" />
+        </FormControl>
+        <FormControl mb={4} color="#12327C">
+          <FormLabel>Confirmar senha:</FormLabel>
+          <Input type="password" placeholder="**********" />
+        </FormControl>
+      </Flex>
       <Button colorScheme="blue" width="100%" mt={4}>
         Salvar
       </Button>
-    </Box>
+    </Container>
   )
 }
