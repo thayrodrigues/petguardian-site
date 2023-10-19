@@ -1,5 +1,4 @@
 import {
-  Box,
   Flex,
   Heading,
   Button,
@@ -9,13 +8,14 @@ import {
   Textarea,
   FormControl,
   FormLabel,
+  Container,
 } from '@chakra-ui/react'
 
 import { ChevronLeftIcon } from '@chakra-ui/icons'
 
 export default function PetRegister() {
   return (
-    <Box px={5} py={6} bg="white">
+    <Container px={5} py={6} bg="white">
       <Button
         leftIcon={<ChevronLeftIcon />}
         variant="ghost"
@@ -43,12 +43,14 @@ export default function PetRegister() {
       </Flex>
       <FormControl mb={4}>
         <FormLabel color="#12327C">Selecione as qualidades:</FormLabel>
-        <Checkbox defaultChecked>Calmo</Checkbox>
-        <Checkbox>Ativo</Checkbox>
-        <Checkbox>Carinhoso</Checkbox>
-        <Checkbox>educado</Checkbox>
-        <Checkbox>brincalhão</Checkbox>
-        <Checkbox>esperto</Checkbox>
+        <Flex wrap="wrap" gap={4}>
+          <Checkbox defaultChecked>Calmo</Checkbox>
+          <Checkbox>Ativo</Checkbox>
+          <Checkbox>Carinhoso</Checkbox>
+          <Checkbox>educado</Checkbox>
+          <Checkbox>brincalhão</Checkbox>
+          <Checkbox>esperto</Checkbox>
+        </Flex>
       </FormControl>
       <FormControl mb={4}>
         <FormLabel color="#12327C">Porte:</FormLabel>
@@ -65,6 +67,6 @@ export default function PetRegister() {
       <Button colorScheme="blue" width="100%">
         Cadastrar
       </Button>
-    </Box>
+    </Container>
   )
 }

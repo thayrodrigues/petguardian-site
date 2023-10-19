@@ -2,7 +2,15 @@ import { Flex, Button, FormControl, FormLabel, Input } from '@chakra-ui/react'
 
 export default function RegisterForm() {
   return (
-    <Flex as="form" w="full" my={4} direction="column" align="center">
+    <Flex
+      as="form"
+      w="full"
+      maxW="sm"
+      my={4}
+      mx="auto"
+      direction="column"
+      align="center"
+    >
       <FormControl>
         <FormLabel>Nome e Sobrenome:</FormLabel>
         <Input type="text" placeholder="Digite seu nome" required />
@@ -27,7 +35,7 @@ export default function RegisterForm() {
         <FormLabel mt={4}>Confirmar senha:</FormLabel>
         <Input type="password" placeholder="Confirme a senha" required />
       </FormControl>
-      <Button type="submit" colorScheme="blue" w="80%" mt={6}>
+      <Button type="submit" colorScheme="blue" w="80%" mt={8}>
         Cadastre-se
       </Button>
     </Flex>

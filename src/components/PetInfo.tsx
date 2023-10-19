@@ -1,9 +1,17 @@
-import { Box, Flex, Text, Button, Image, Circle } from '@chakra-ui/react'
+import {
+  Box,
+  Flex,
+  Text,
+  Button,
+  Image,
+  Circle,
+  Container,
+} from '@chakra-ui/react'
 import { ChevronLeftIcon } from '@chakra-ui/icons'
 
 export default function PetInfo() {
   return (
-    <Box bg="white" p={4}>
+    <Container bg="white" p={4}>
       <Flex justifyContent="space-between" alignItems="center">
         <Button leftIcon={<ChevronLeftIcon />} variant="ghost" color="#12327C">
           voltar
@@ -13,7 +21,7 @@ export default function PetInfo() {
         <Text fontSize="2xl" fontWeight="bold" color="#12327C">
           Dunga
         </Text>
-        <Image src="./Dunga.png" alt="Dunga" w="195px" h="195px" mb={2} />
+        <Image src="/Dunga.png" alt="Dunga" w="195px" h="195px" mb={2} />
       </Flex>
       <Box
         display="flex"
@@ -123,6 +131,6 @@ export default function PetInfo() {
       <Button mt={6} colorScheme="blue">
         Falar com responsável
       </Button>
-    </Box>
+    </Container>
   )
 }

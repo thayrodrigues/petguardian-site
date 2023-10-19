@@ -14,6 +14,7 @@ import { useState } from 'react'
 import { useForm } from 'react-hook-form'
 import { AuthLogin } from '@/types/authTypes'
 import { AuthService } from '@/services/authService'
+import { useRouter } from 'next/navigation'
 
 export default function LoginForm() {
   const [showPassword, setShowPassword] = useState(false)
@@ -23,11 +24,12 @@ export default function LoginForm() {
     formState: { isSubmitting },
   } = useForm<AuthLogin>()
   const toast = useToast()
+  const router = useRouter()
 
   const onSubmit = async (data: AuthLogin) => {
     try {
       const response = await AuthService.login(data)
-      console.log(response)
+      router.push('/home')
     } catch (error: any) {
       toast({
         title: 'Erro ao fazer login',

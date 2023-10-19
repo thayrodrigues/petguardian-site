@@ -9,6 +9,7 @@ export default function RegisterScreen() {
       w="full"
       h="155vh"
       bg="linear-gradient(180deg, #5C99E1 32.86%, #1916BB 100%)"
+      justify="center"
     >
       <Flex
         color="#12327C"

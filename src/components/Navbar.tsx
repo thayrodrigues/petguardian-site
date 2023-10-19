@@ -6,7 +6,7 @@ export default function Navbar() {
   return (
     <Flex bg="#12327C" p={4} color="white" align="center">
       <Image
-        src="./petguardian-white.png"
+        src="/petguardian-white.png"
         alt="Pet Guardian Icon"
         w={8}
         h={8}
