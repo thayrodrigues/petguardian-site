@@ -1,6 +1,5 @@
 import { useState } from 'react'
 import {
-  Box,
   Flex,
   Button,
   FormControl,
@@ -10,10 +9,13 @@ import {
   IconButton,
   InputGroup,
   FormErrorMessage,
+  useToast,
 } from '@chakra-ui/react'
 import { Eye, EyeOff } from 'lucide-react'
 import { useForm } from 'react-hook-form'
 import { AuthRegister } from '@/types/authTypes'
+import { AuthService } from '@/services/authService'
+import { useRouter } from 'next/navigation'
 
 export default function RegisterForm() {
   const {
@@ -25,14 +27,52 @@ export default function RegisterForm() {
   // faz a verificação se a senha está sendo mostrada ou não
   const [showPassword, setShowPassword] = useState(false)
   const [showConfirmPassword, setShowConfirmPassword] = useState(false)
+  const toast = useToast()
+  const router = useRouter()
 
   const handleShowPassword = () => setShowPassword(!showPassword)
 
   const handleShowConfirmPassword = () =>
     setShowConfirmPassword(!showConfirmPassword)
 
-  const registerUser = (data: AuthRegister) => {
-    console.log(data)
+  const registerUser = async (data: AuthRegister) => {
+    // valida se as senhas são iguais
+    if (data.password !== data.password2) {
+      console.log('Senhas não coincidem')
+      toast({
+        title: 'Erro ao cadastrar',
+        description: 'Senhas não coincidem',
+        position: 'top-right',
+        status: 'error',
+        duration: 9000,
+        isClosable: true,
+      })
+    }
+
+    delete data.password2
+
+    try {
+      await AuthService.register(data)
+      toast({
+        title: 'Cadastro realizado',
+        description: 'Usuário cadastrado com sucesso',
+        position: 'top-right',
+        status: 'success',
+        duration: 9000,
+        isClosable: true,
+      })
+      router.push('/')
+      // eslint-disable-next-line @typescript-eslint/no-explicit-any
+    } catch (error: any) {
+      toast({
+        title: 'Erro ao cadastrar',
+        description: error.message,
+        position: 'top-right',
+        status: 'error',
+        duration: 9000,
+        isClosable: true,
+      })
+    }
   }
 
   return (
@@ -45,9 +85,8 @@ export default function RegisterForm() {
       align="center"
       onSubmit={handleSubmit(registerUser)}
     >
-      <Box w="full">
+      <Flex w="full" justify="space-between" gap={6}>
         <FormControl
-          w="xs"
           mt={4}
           isInvalid={errors.cpf && typeof errors.cpf.message === 'string'}
         >
@@ -69,7 +108,20 @@ export default function RegisterForm() {
             )}
           </FormErrorMessage>
         </FormControl>
-      </Box>
+
+        <FormControl
+          mt={4}
+          isInvalid={errors.cpf && typeof errors.cpf.message === 'string'}
+        >
+          <FormLabel>Data de Nascimento</FormLabel>
+          <Input
+            type="date"
+            {...register('birthDate', {
+              required: 'Este campo é obrigatório',
+            })}
+          />
+        </FormControl>
+      </Flex>
 
       <FormControl
         mt={4}

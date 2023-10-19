@@ -1,6 +1,7 @@
 'use client'
 
 import RegisterForm from '@/components/RegisterForm'
+import BackNavButton from '@/components/backNavButton'
 import { Flex, Heading, Image, Text } from '@chakra-ui/react'
 
 export default function RegisterScreen() {
@@ -23,6 +24,7 @@ export default function RegisterScreen() {
         align="center"
         direction="column"
       >
+        <BackNavButton />
         <Image
           src="./Logomarca.png"
           alt="logomarca petguardian"
