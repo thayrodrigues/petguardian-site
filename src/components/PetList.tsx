@@ -1,3 +1,5 @@
+'use client'
+
 import { Box, Flex, Heading, Select, Text } from '@chakra-ui/react'
 import { ChevronDownIcon } from '@chakra-ui/icons'
 import PetCard from './PetCard'

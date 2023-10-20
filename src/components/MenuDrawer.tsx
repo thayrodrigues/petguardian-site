@@ -1,3 +1,5 @@
+import { tokenStore } from '@/infra/nookies'
+import { Link } from '@chakra-ui/next-js'
 import {
   Avatar,
   Box,
@@ -18,10 +20,15 @@ import { LogOut, Menu } from 'lucide-react'
 import { useRouter } from 'next/navigation'
 import { useRef } from 'react'
 
-export default function MenuDrawer() {
+export default function MenuDrawer({ userName }: { userName: string }) {
   const { isOpen, onOpen, onClose } = useDisclosure()
   const router = useRouter()
   const btnRef = useRef(null)
+
+  const handleLogout = () => {
+    tokenStore.delete()
+    router.push('/')
+  }
 
   return (
     <>
@@ -63,22 +70,28 @@ export default function MenuDrawer() {
           </DrawerBody>
 
           <DrawerFooter>
-            <Flex w="full" justify="space-between" gap={4} mx={2}>
-              <Avatar name="Thayna Rodrigues" size="md" />
+            <Flex
+              w="full"
+              justify="space-between"
+              align="center"
+              gap={4}
+              mx={2}
+            >
+              <Avatar name={userName} size="md" />
               <Box>
                 <Text fontWeight="bold" color="#1F1F1F">
-                  Tatiane Alves
+                  {userName}
                 </Text>
-                <Text fontSize="sm" color="#444444">
-                  São José dos Campos
-                </Text>
+                <Link href="/perfil" color="#1F1F1F">
+                  Meu Dados
+                </Link>
               </Box>
               <IconButton
                 aria-label="sair"
                 variant="ghost"
                 colorScheme="red"
                 icon={<LogOut size={18} />}
-                onClick={() => router.push('/')}
+                onClick={handleLogout}
               />
             </Flex>
           </DrawerFooter>
