@@ -1,26 +1,38 @@
 'use client'
 
-import { Box, Flex, Heading, Select, Text } from '@chakra-ui/react'
+import {
+  Box,
+  Flex,
+  FormControl,
+  FormLabel,
+  Heading,
+  IconButton,
+  Input,
+  InputGroup,
+  InputRightElement,
+  Select,
+} from '@chakra-ui/react'
 import { ChevronDownIcon } from '@chakra-ui/icons'
 import PetCard from './PetCard'
+import { Search } from 'lucide-react'
 
 export default function PetList() {
   return (
-    <Box px={5}>
-      <Text
-        fontFamily="Montserrat"
-        lineHeight="1.43"
-        fontWeight="bold"
-        fontSize="16px"
-        color="#12327C"
-        textAlign="center"
-        mt={4}
-      >
-        endereço usuário
-        <ChevronDownIcon ml={2} />
-      </Text>
+    <Flex direction="column" w="full" align="center" px={8}>
+      <FormControl w="xs" borderRadius="2xl" my={6}>
+        <FormLabel>Busque os animais próximos a você</FormLabel>
+        <InputGroup w="xs">
+          <InputRightElement>
+            <IconButton
+              colorScheme="blue"
+              aria-label="buscar"
+              icon={<Search size={16} />}
+            />
+          </InputRightElement>
+          <Input type="text" placeholder="Digite seu cep" />
+        </InputGroup>
+      </FormControl>
       <Heading
-        fontFamily="Montserrat"
         fontWeight="400"
         fontSize="18px"
         lineHeight="20px"
@@ -31,9 +43,13 @@ export default function PetList() {
       >
         Veja os amigos disponíveis para adoção!
       </Heading>
-      <Flex mb={4} justifyContent="center" maxW="1000px" wrap="wrap" gap={4}>
-        <Select placeholder="Categoria" icon={<ChevronDownIcon />} width="sm" />
-        <Select placeholder="Cães" icon={<ChevronDownIcon />} width="sm" />
+      <Flex w="full" maxW="1200px" mb={4} wrap="wrap" gap={4}>
+        <Select
+          placeholder="Categoria"
+          icon={<ChevronDownIcon />}
+          width="2xs"
+        />
+        <Select placeholder="Cães" icon={<ChevronDownIcon />} width="2xs" />
       </Flex>
       <Flex mb={4} wrap="wrap" gap={6} w="full" justify="center">
         <PetCard />
@@ -43,6 +59,6 @@ export default function PetList() {
         <PetCard />
         <PetCard />
       </Flex>
-    </Box>
+    </Flex>
   )
 }
