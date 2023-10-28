@@ -1,31 +1,48 @@
-import { Flex, Image, Box, Heading, Text } from '@chakra-ui/react'
+import { PetsProps } from '@/types/petsTypes'
+import { Flex, Box, Heading, Text, Avatar, Button } from '@chakra-ui/react'
 
-export default function PetCard() {
+export default function PetCard({
+  name,
+  photoUrl,
+  age,
+  distance,
+  category,
+  animalSize,
+  qualities,
+}: PetsProps) {
   return (
-    <Flex bg="gray.100" borderRadius="md" p={4} maxW="400px" align="center">
-      <Image src="/Dunga.png" alt="Dunga" borderRadius="full" boxSize="80px" />
-      <Box ml={4}>
-        <Heading size="md" color="#3772FF">
-          Dunga
+    <Flex
+      bg="white"
+      borderRadius="2xl"
+      py={4}
+      px={8}
+      w="400px"
+      align="center"
+      shadow="2xl"
+    >
+      <Avatar size="2xl" name={name} src={photoUrl} />
+      <Box ml={4} w="full">
+        <Heading size="md" color="blue.500">
+          {name}
         </Heading>
-        <Text fontFamily="Montserrat">2 anos</Text>
-        <Text fontFamily="Montserrat">Porte pequeno</Text>
-        <Text fontFamily="Montserrat">Calmo e educado</Text>
-        <Text fontFamily="Montserrat">2,2km - cães</Text>
+        <Text>{age} anos</Text>
+        <Text>Porte {animalSize}</Text>
+        <Text>{qualities.join(', ')}</Text>
+        {!distance ? (
+          <Text fontSize="xs" my={2}>
+            {category}
+          </Text>
+        ) : (
+          <Text fontSize="xs" my={2}>
+            {distance} km - {category}
+          </Text>
+        )}
+        <Flex w="full" justify="end">
+          <Button variant="link" size="xs" colorScheme="blue">
+            ver detalhes
+          </Button>
+        </Flex>
       </Box>
-      <Text
-        fontFamily="Montserrat"
-        lineHeight="1.6"
-        fontWeight="regular"
-        fontSize="10px"
-        textDecoration="underline"
-        color="#444444"
-        width="97.1px"
-        height="13.63px"
-        textAlign="end"
-      >
-        ver detalhes
-      </Text>
     </Flex>
   )
 }

@@ -2,7 +2,8 @@ import { cookies } from 'next/headers'
 import { redirect } from 'next/navigation'
 import { jwtData } from '@/infra/jwToken'
 import Navbar from '@/components/Navbar'
-import PetList from '@/components/PetList'
+import MyPetsScreen from '@/patterns/MyPetsScreen'
+import { petServices } from '@/services/petsService'
 
 const userData = () => {
   const token = cookies().get('PETGUARDIAN_TK')
@@ -17,13 +18,18 @@ const userData = () => {
   }
 }
 
-export default function Home() {
+export default async function MyPets() {
   const session = userData()
+
+  const pets = await petServices.getPetsByUser(
+    session.token,
+    session.user.userId,
+  )
 
   return (
     <>
       <Navbar userName={session.user.name} />
-      <PetList token={session.token} />
+      <MyPetsScreen pets={pets} />
     </>
   )
 }
