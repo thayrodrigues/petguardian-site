@@ -55,7 +55,7 @@ export default function LoginScreen() {
             colorScheme="blue"
             w="80%"
             maxW="310px"
-            onClick={() => router.push('/cadastre')}
+            onClick={() => router.push('/cadastre-se')}
             mx="auto"
           >
             Cadastre-se

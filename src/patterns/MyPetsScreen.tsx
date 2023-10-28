@@ -5,8 +5,11 @@ import BackNavButton from '@/components/backNavButton'
 import { PetsProps } from '@/types/petsTypes'
 import { Box, Button, Flex, Heading, Text } from '@chakra-ui/react'
 import { Plus } from 'lucide-react'
+import { useRouter } from 'next/navigation'
 
 export default function MyPetsScreen({ pets }: { pets: PetsProps[] }) {
+  const router = useRouter()
+
   return (
     <Box w="full" maxW="1200px" minH="90vh" mx="auto" p={8}>
       <BackNavButton />
@@ -15,7 +18,11 @@ export default function MyPetsScreen({ pets }: { pets: PetsProps[] }) {
       </Heading>
 
       <Flex w="full" justify="end">
-        <Button colorScheme="blue" leftIcon={<Plus size={18} />}>
+        <Button
+          colorScheme="blue"
+          leftIcon={<Plus size={18} />}
+          onClick={() => router.push('/cadastro-de-pet')}
+        >
           Adicionar
         </Button>
       </Flex>
