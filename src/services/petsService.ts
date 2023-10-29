@@ -1,5 +1,6 @@
 import { api } from '@/infra/axios.conf'
-import { PetsProps } from '@/types/petsTypes'
+import { PetsProps, PetsRegisterForm } from '@/types/petsTypes'
+import { SendingImages } from '@/utils/sendingImages'
 
 export const petServices = {
   getPets: async (
@@ -31,5 +32,30 @@ export const petServices = {
       },
     })
     return data
+  },
+
+  registerPet: async (data: PetsRegisterForm, token: string) => {
+    if (data.photo && data.photo.length > 0) {
+      const fileData = data.photo.item(0)
+      const response = await SendingImages.Send(fileData, data.name, token)
+      delete data.photo
+      data.photoUrl = [response.url]
+    } else {
+      delete data.photo
+    }
+
+    try {
+      const resp = await api.post('/pets', data, {
+        headers: {
+          Authorization: `Bearer ${token}`,
+        },
+      })
+      return resp
+    } catch (error: any) {
+      if (error.request.status === 400) {
+        throw new Error('Erro ao buscar o cep informado na API')
+      }
+      throw new Error(error.response.data.message || error.message)
+    }
   },
 }
