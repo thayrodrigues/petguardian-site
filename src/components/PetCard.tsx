@@ -1,5 +1,6 @@
 import { PetsProps } from '@/types/petsTypes'
 import { Flex, Box, Heading, Text, Avatar, Button } from '@chakra-ui/react'
+import { useRouter } from 'next/navigation'
 
 export default function PetCard({
   name,
@@ -9,7 +10,10 @@ export default function PetCard({
   category,
   animalSize,
   qualities,
+  id,
 }: PetsProps) {
+  const router = useRouter()
+
   return (
     <Flex
       bg="white"
@@ -38,7 +42,12 @@ export default function PetCard({
           </Text>
         )}
         <Flex w="full" justify="end">
-          <Button variant="link" size="xs" colorScheme="blue">
+          <Button
+            variant="link"
+            size="xs"
+            colorScheme="blue"
+            onClick={() => router.push(`/pet/${id}`)}
+          >
             ver detalhes
           </Button>
         </Flex>

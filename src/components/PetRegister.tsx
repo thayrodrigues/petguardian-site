@@ -109,7 +109,6 @@ export default function PetRegister({
             </FormControl>
 
             <FormControl
-              w="60%"
               isInvalid={errors.breed && errors.breed.message === 'string'}
             >
               <FormLabel color="#12327C">Raça:</FormLabel>

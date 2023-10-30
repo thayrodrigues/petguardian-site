@@ -11,7 +11,7 @@ export default function MyPetsScreen({ pets }: { pets: PetsProps[] }) {
   const router = useRouter()
 
   return (
-    <Box w="full" maxW="1200px" minH="90vh" mx="auto" p={8}>
+    <Box w="full" bg="gray.50" maxW="1200px" minH="90vh" mx="auto" p={8}>
       <BackNavButton />
       <Heading color="blue.700" fontSize="3xl" mt={4}>
         Meu Pets

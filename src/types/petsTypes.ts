@@ -3,6 +3,14 @@ export interface PetsHook {
   cep?: string
 }
 
+export interface OwnerProps {
+  userId: number
+  name: string
+  email: string
+  phoneNumber1: string
+  phoneNumber2: string
+}
+
 export interface PetsProps {
   id: string
   name: string
@@ -16,6 +24,7 @@ export interface PetsProps {
   cep: string
   distance: number
   userId: string
+  owner: OwnerProps
 }
 
 export interface PetsRegisterForm {

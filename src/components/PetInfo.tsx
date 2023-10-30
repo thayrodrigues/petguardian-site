@@ -1,27 +1,22 @@
-import {
-  Box,
-  Flex,
-  Text,
-  Button,
-  Image,
-  Circle,
-  Container,
-} from '@chakra-ui/react'
-import { ChevronLeftIcon } from '@chakra-ui/icons'
+'use client'
 
-export default function PetInfo() {
+import { Box, Flex, Text, Button, Container, Avatar } from '@chakra-ui/react'
+import { PetsProps } from '@/types/petsTypes'
+
+export default function PetInfo({
+  pet,
+  owner,
+}: {
+  pet: PetsProps
+  owner: boolean
+}) {
   return (
     <Container bg="white" p={4}>
-      <Flex justifyContent="space-between" alignItems="center">
-        <Button leftIcon={<ChevronLeftIcon />} variant="ghost" color="#12327C">
-          voltar
-        </Button>
-      </Flex>
-      <Flex flexDirection="column" alignItems="center" mt={6}>
+      <Flex flexDirection="column" alignItems="center" mt={6} gap={4}>
         <Text fontSize="2xl" fontWeight="bold" color="#12327C">
-          Dunga
+          {pet.name}
         </Text>
-        <Image src="/Dunga.png" alt="Dunga" w="195px" h="195px" mb={2} />
+        <Avatar size="2xl" name={pet.name} src={pet.photoUrl} />
       </Flex>
       <Box
         display="flex"
@@ -35,27 +30,24 @@ export default function PetInfo() {
               Informações do Pet
             </Text>
             <Text
-              fontFamily="Montserrat"
               fontSize="14px"
               fontWeight="400"
               lineHeight="20px"
               letterSpacing="0px"
             >
-              2 anos
+              {pet.age} anos
             </Text>
             <Text
-              fontFamily="Montserrat"
               fontSize="14px"
               fontWeight="400"
               lineHeight="20px"
               letterSpacing="0px"
             >
-              Porte pequeno
+              Porte {pet.animalSize}
             </Text>
           </Box>
           <Box>
             <Text
-              fontFamily="Montserrat"
               fontSize="14px"
               fontWeight="400"
               lineHeight="20px"
@@ -63,16 +55,15 @@ export default function PetInfo() {
               mt={7}
               mr={20}
             >
-              Calmo e educado
+              {pet.qualities.join(', ')}
             </Text>
             <Text
-              fontFamily="Montserrat"
               fontSize="14px"
               fontWeight="400"
               lineHeight="20px"
               letterSpacing="0px"
             >
-              2,2km - cães
+              {pet.distance ? `${pet.distance} km -` : ''} {pet.breed}
             </Text>
           </Box>
         </Flex>
@@ -88,49 +79,40 @@ export default function PetInfo() {
           color="#1F1F1F"
           mt={2}
         >
-          Comumente descrito como um cão calmo e educado, o Corgi de 2 anos de
-          idade exibe maturidade e tranquilidade. Seu comportamento dócil e
-          equilibrado faz dele um companheiro agradável para famílias e
-          indivíduos. Sua natureza educada o torna facilmente adaptável a
-          diferentes ambientes e situações sociais, tornando-o um amigo leal e
-          de confiança.
+          {pet.description}
         </Text>
       </Box>
-      <Box mt={6}>
-        <Text fontSize="lg" fontWeight="600" color="#12327C">
-          Doador
-        </Text>
-        <Flex alignItems="center" mt={2}>
-          <Circle bg="#63B3ED" size="40px">
-            <Text fontFamily="Inter" color="#000000" fontWeight="bold">
-              TA
-            </Text>
-          </Circle>
-          <Box ml={4}>
-            <Text
-              fontFamily="Montserrat"
-              fontWeight="500"
-              fontSize="14px"
-              lineHeight="20px"
-              color="#1F1F1F"
-            >
-              Tatiane Alves
-            </Text>
-            <Text
-              fontFamily="Montserrat"
-              fontWeight="400"
-              fontSize="12px"
-              lineHeight="20px"
-              color="#444444"
-            >
-              São José dos Campos
-            </Text>
-          </Box>
-        </Flex>
-      </Box>
-      <Button mt={6} colorScheme="blue">
-        Falar com responsável
-      </Button>
+      {!owner && (
+        <Box mt={6}>
+          <Text fontSize="lg" fontWeight="600" color="#12327C">
+            Doador
+          </Text>
+          <Flex alignItems="center" mt={2}>
+            <Avatar size="md" name={pet.owner.name} />
+            <Box ml={4}>
+              <Text
+                fontWeight="500"
+                fontSize="14px"
+                lineHeight="20px"
+                color="#1F1F1F"
+              >
+                {pet.owner.name}
+              </Text>
+              <Text
+                fontWeight="400"
+                fontSize="12px"
+                lineHeight="20px"
+                color="#444444"
+              >
+                {pet.owner.email}
+              </Text>
+            </Box>
+          </Flex>
+          <Button mt={6} colorScheme="blue">
+            Falar com responsável
+          </Button>
+        </Box>
+      )}
     </Container>
   )
 }
